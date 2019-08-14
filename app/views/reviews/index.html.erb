@@ -1,9 +1,9 @@
 <h1> All reviews of the restaurant you selected </h1>
-    <ul class="list-group">
-      <% @reviews.each do |review| %>
-      <li class="list-group-item">
-         <p><%= review.content %></p>
-      </li>
-      <% end %>
-    </ul>
-    <%= link_to "Go back to the home page", root_path, class: 'btn btn-primary' %>
+  <ul class="list-group">
+    <% @reviews.each do |review| %>
+    <li class="list-group-item">
+       <p><%= review.content %></p>
+    </li>
+    <% end %>
+  </ul>
+<%= link_to "Go back to the home page", root_path, class: 'btn btn-primary' %>
