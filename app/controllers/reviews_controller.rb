@@ -18,6 +18,21 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:content)
+    params.require(:review).permit(:content, :rating)
   end
 end
+
+
+  def create
+    @review = Review.new(reviews_params)
+    @review.restaurant = Restaurant.find(params[:restaurant_id])
+    if @review.save
+      redirect_to restaurant_path(@review.restaurant)
+    else
+      redirect_to restaurant_path(@review.restaurant)
+    end
+  end
+
+  private
+
+

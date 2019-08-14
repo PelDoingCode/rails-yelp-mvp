@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <div class="container text-center">
+    <h1><%= @restaurant.name %></h1>
+    <p><%= @restaurant.address %></p>
+    <h2>Reviews</h2>
+    <ul class="list-group">
+      <% @reviews.each do |review| %>
+      <li class="list-group-item text-justify">
+        <p><%= review.content %></p>
+        <p>Rating: <strong><%= review.rating %></strong></p>
+      </li>
+      <% end %>
+    </ul>
+    <h2>Add a new Review</h2>
+    <%= simple_form_for [@restaurant, @review] do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <% if @review.errors.any? %>
+        <div class="errors-container">
+          <ul class="list-unstyled">
+            <% @review.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= f.input :content, required: true %>
+      <%= f.input :rating, collection: 0..5, required: true %>
+      <%= f.button :submit, class:"btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

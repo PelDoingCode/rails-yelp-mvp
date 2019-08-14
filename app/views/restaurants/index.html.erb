@@ -1,1 +1,12 @@
-
+<div class="wrapper">
+  <div class="container">
+    <ul class="list-group">
+      <% @restaurants.each do |restaurant| %>
+      <li class="list-group-item">
+        <h3><%= link_to restaurant.name, restaurant_path(restaurant), class:"restaurant-name" %> (<%= restaurant.category %>)</h3>
+         <p><%= restaurant.address %></p>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
